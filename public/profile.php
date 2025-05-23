@@ -79,6 +79,7 @@ try {
         <?php endif; ?>
 
         <div class="profile-actions">
+
             <a href="add_post.php">Создать новый пост</a>
             <a href="logout.php">Выйти</a>
             <a href="index.php">Главная страница</a>

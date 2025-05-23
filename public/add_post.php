@@ -109,112 +109,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создать новый пост</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .container {
-            max-width: 700px;
+    <link rel="stylesheet" href="assets/css/add_post.css">
 
-        }
-
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1em;
-            min-height: 150px;
-
-            resize: vertical;
-
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group textarea:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-        }
-
-        .form-group.checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .form-group.checkbox-group input[type="checkbox"] {
-            margin-right: 10px;
-            width: auto;
-
-        }
-
-        .form-group.checkbox-group label {
-            margin-bottom: 0;
-
-        }
-
-        .back-link {
-            display: block;
-            margin-top: 25px;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-            text-align: center;
-        }
-
-        .back-link:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container">
-        <h2>Создать новый пост</h2>
+        <div class="nn">
+            <h2 class="titlee">Создать новый пост</h2>
 
-        <?php if (!empty($message)): ?>
-            <p class="message <?php echo empty($errors) ? 'success-message' : 'error-message'; ?>">
-                <?php echo $message; ?>
-            </p>
-        <?php endif; ?>
+            <?php if (!empty($message)): ?>
+                <p class="message <?php echo empty($errors) ? 'success-message' : 'error-message'; ?>">
+                    <?php echo $message; ?>
+                </p>
+            <?php endif; ?>
 
-        <form action="add_post.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group <?php echo isset($errors['title']) ? 'has-error' : ''; ?>">
-                <label for="title">Заголовок поста:</label>
-                <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($old_data['title']); ?>"
-                    required>
-                <?php if (isset($errors['title'])): ?>
-                    <p class="error-message"><?php echo $errors['title']; ?></p>
-                <?php endif; ?>
-            </div>
+            <form action="add_post.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group <?php echo isset($errors['title']) ? 'has-error' : ''; ?>">
+                    <label for="title">Заголовок поста:</label>
+                    <input type="text" id="title" name="title"
+                        value="<?php echo htmlspecialchars($old_data['title']); ?>" required>
+                    <?php if (isset($errors['title'])): ?>
+                        <p class="error-message"><?php echo $errors['title']; ?></p>
+                    <?php endif; ?>
+                </div>
 
-            <div class="form-group <?php echo isset($errors['content']) ? 'has-error' : ''; ?>">
-                <label for="content">Содержание поста:</label>
-                <textarea id="content" name="content"
-                    required><?php echo htmlspecialchars($old_data['content']); ?></textarea>
-                <?php if (isset($errors['content'])): ?>
-                    <p class="error-message"><?php echo $errors['content']; ?></p>
-                <?php endif; ?>
-            </div>
+                <div class="form-group <?php echo isset($errors['content']) ? 'has-error' : ''; ?>">
+                    <label for="content">Содержание поста:</label>
+                    <textarea id="content" name="content"
+                        required><?php echo htmlspecialchars($old_data['content']); ?></textarea>
+                    <?php if (isset($errors['content'])): ?>
+                        <p class="error-message"><?php echo $errors['content']; ?></p>
+                    <?php endif; ?>
+                </div>
 
-            <div class="form-group <?php echo isset($errors['image']) ? 'has-error' : ''; ?>">
-                <label for="image">Изображение (опционально):</label>
-                <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/gif">
-                <?php if (isset($errors['image'])): ?>
-                    <p class="error-message"><?php echo $errors['image']; ?></p>
-                <?php endif; ?>
-            </div>
+                <div class="form-group <?php echo isset($errors['image']) ? 'has-error' : ''; ?>">
+                    <label for="image">Изображение (опционально):</label>
+                    <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/gif">
+                    <?php if (isset($errors['image'])): ?>
+                        <p class="error-message"><?php echo $errors['image']; ?></p>
+                    <?php endif; ?>
+                </div>
 
-            <div class="form-group checkbox-group">
-                <input type="checkbox" id="is_private" name="is_private" value="1" <?php echo $old_data['is_private'] ? 'checked' : ''; ?>>
-                <label for="is_private">Сделать пост приватным (доступен только мне)</label>
-            </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="is_private" name="is_private" value="1" <?php echo $old_data['is_private'] ? 'checked' : ''; ?>>
+                    <label for="is_private">Сделать пост приватным (доступен только мне)</label>
+                </div>
 
-            <button type="submit">Создать пост</button>
-        </form>
-        <a href="profile.php" class="back-link">← Вернуться в личный кабинет</a>
+                <button type="submit">Создать пост</button>
+            </form>
+            <a href="profile.php" class="back-link">← Вернуться в личный кабинет</a>
+        </div>
     </div>
 </body>
 
